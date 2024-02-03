@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"math"
+	"strings"
 )
 
 func main() {
@@ -99,6 +100,16 @@ func main() {
 
 	fmt.Println("====Starting the function done by Shubham Bathla which is accepting principal amount, rate of Interest and time of loan during execution and output Simple Interest====")
 	calculateAndDisplaySimpleInterest()
+
+	fmt.Println("====Starting the function done by Rohit will check a string is palindrome or not====")
+	var str string //Declaring variable with data type string
+	fmt.Print("Enter a string:")
+	fmt.Scan(&str)       //Taking user input.
+	if palindrome(str) { //Final comparions to print.
+		fmt.Printf("%s is a palindrome", str)
+	} else {
+		fmt.Printf("%s is not a palindrome", str)
+	}
 
 }
 
@@ -211,4 +222,19 @@ func calculateAndDisplaySimpleInterest() {
 
 	// Displaying the result
 	fmt.Printf("The simple interest is: %f\n", interest)
+}
+
+//Created by Rohit - 500230041
+//This function will check whether provided string is a palindrome or not.
+
+func palindrome(palin string) bool { //Function with string as parameeter and boolean data type.
+	palin = strings.ToLower(palin) // string.ToLower() func will lower the case of given string.
+
+	for i, j := 0, len(palin)-1; i < j; i, j = i+1, j-1 {
+		if palin[i] != palin[j] { //Comparing the main string and reversed string.
+			return false //Will return false if the reversed string don't match.
+		}
+	}
+	return true
+
 }
