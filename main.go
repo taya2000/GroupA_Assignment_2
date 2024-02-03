@@ -33,17 +33,28 @@ func main() {
 	fmt.Println("perimeter of the rectangle is: ", perimeter)
 	fmt.Println("")
 
-	fmt.Println("====Starting the function done by Mohammed Abdul which Reverse the String====")
-	//Reverse a String
-	// Getting input from the user
-	var input string
-	fmt.Println("Enter a string: ")
-	fmt.Scanln(&input)
-	// Calling the reverseString function to get the reversed string
-	reversed := reverseString(input)
-	// Printing the reversed string
-	fmt.Printf("Reversed string: %s\n", reversed)
+	fmt.Println("====Starting the function done by Samhitha which will Print Fibonacci Series====")
+
+	//Fibonacci Series
+	// Set the limit for the Fibonacci series
+	limit := 50
+	// Generate and print the Fibonacci series
+	result := fibonacci(limit)
+	fmt.Printf("Fibonacci series up to %d: %v\n", limit, result)
 	fmt.Println("")
+
+	fmt.Println("====Starting the function done by Abhisheik Yadla which will print Hello world====")
+
+	var year int
+
+	fmt.Print("Enter a year: ")
+	fmt.Scan(&year)
+
+	if isLeapYear(year) {
+		fmt.Println(year, "is a leap year.")
+	} else {
+		fmt.Println(year, "is not a leap year.")
+	}
 }
 
 // Created by Tejaswi Cheripally - 500229934
@@ -66,21 +77,27 @@ func calcRectangleValues(length, width float64) (float64, float64) {
 	return area, perimeter
 }
 
-// Created by Mohammed Abdul - 500225922
-// This function will reverse the string
-func reverseString(input string) string {
-	// To make reversing easier, convert the string to a rune slice.
-	characters := []rune(input)
-
-	// Determining the length of the slice
-	length := len(characters)
-
-	// Iterate through half of the loop and swaping the characters
-	for i, j := 0, length-1; i < j; i, j = i+1, j-1 {
-		// Swaping the characters at positions i and j
-		characters[i], characters[j] = characters[j], characters[i]
+// Created by Samhitha Dubbaka - 500225971
+// fibonacci generates a Fibonacci series up to the given limit
+func fibonacci(limit int) []int {
+	// Initialize the series with the first two Fibonacci numbers
+	series := []int{0, 1}
+	// Generate Fibonacci numbers until reaching the limit
+	for i := 2; ; i++ {
+		nextNum := series[i-1] + series[i-2]
+		// Break if the next number exceeds the limit
+		if nextNum > limit {
+			break
+		}
+		series = append(series, nextNum)
 	}
+	return series
+}
 
-	// Converting the rune slice back to a string and return
-	return string(characters)
+//Created by Abhisheik Yadla - 500219580
+//This function will check whether the given year is leap year or not
+func isLeapYear(year int) bool {
+	// Leap year conditions: divisible by 4, not divisible by 100 unless divisible by 400
+	return (year%4 == 0 && year%100 != 0) || (year%400 == 0)
+
 }
