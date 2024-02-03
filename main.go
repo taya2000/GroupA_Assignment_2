@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 func main() {
 
@@ -67,6 +70,32 @@ func main() {
 	// Printing the reversed string
 	fmt.Printf("Reversed string: %s\n", reversed)
 	fmt.Println("")
+
+	fmt.Println("====Starting the function done by Syed Abdul Khadeer which will Calculate Power of number using Recursion and Binary to Decimal Conversion====")
+
+	//Power of Exponent and Binary to Decimal conversion
+	// Collect user input for the power calculation.
+	var base, exponent int
+	fmt.Println("Enter the base for power calculation: ")
+	fmt.Scanln(&base)
+	fmt.Println("Enter the exponent for power calculation: ")
+	fmt.Scanln(&exponent)
+
+	resultPower := power(base, exponent)
+	fmt.Printf("%d^%d = %d\n", base, exponent, resultPower)
+
+	// Get user input for binary-to-decimal conversion
+	var binaryNumber string
+	fmt.Println("Enter a binary number: ")
+	fmt.Scanln(&binaryNumber)
+
+	resultDecimal, err := binaryToDecimal(binaryNumber)
+	if err != nil {
+		fmt.Println("Error:", err)
+	} else {
+		fmt.Printf("Binary: %s, Decimal: %d\n", binaryNumber, resultDecimal)
+	}
+	fmt.Println("")
 }
 
 // Created by Tejaswi Cheripally - 500229934
@@ -106,8 +135,8 @@ func fibonacci(limit int) []int {
 	return series
 }
 
-//Created by Abhisheik Yadla - 500219580
-//This function will check whether the given year is leap year or not
+// Created by Abhisheik Yadla - 500219580
+// This function will check whether the given year is leap year or not
 func isLeapYear(year int) bool {
 	// Leap year conditions: divisible by 4, not divisible by 100 unless divisible by 400
 	return (year%4 == 0 && year%100 != 0) || (year%400 == 0)
@@ -131,4 +160,28 @@ func reverseString(input string) string {
 
 	// Converting the rune slice back to a string and return
 	return string(characters)
+}
+
+// funtion Nine
+// created by SYED ABDUL QADEER - 500228186
+// program calculates the power of a number using recursion
+// BINARY TO DECIMAL CONVERTOR
+// Recursion is used in power to determine a number's power.
+func power(base, exponent int) int {
+	if exponent == 0 {
+		return 1
+	}
+	return base * power(base, exponent-1)
+}
+
+// binaryToDecimal is a function that changes a binary number from a string representation to a decimal.
+func binaryToDecimal(binary string) (decimal int, err error) {
+	for i := len(binary) - 1; i >= 0; i-- {
+		bit := binary[i]
+		if bit != '0' && bit != '1' {
+			return 0, fmt.Errorf("invalid binary digit: %c", bit)
+		}
+		decimal += int(bit-'0') * int(math.Pow(2, float64(len(binary)-1-i)))
+	}
+	return decimal, nil
 }
