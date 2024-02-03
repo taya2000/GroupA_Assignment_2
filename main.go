@@ -96,6 +96,10 @@ func main() {
 		fmt.Printf("Binary: %s, Decimal: %d\n", binaryNumber, resultDecimal)
 	}
 	fmt.Println("")
+
+	fmt.Println("====Starting the function done by Shubham Bathla which is accepting principal amount, rate of Interest and time of loan during execution and output Simple Interest====")
+	calculateAndDisplaySimpleInterest()
+
 }
 
 // Created by Tejaswi Cheripally - 500229934
@@ -184,4 +188,27 @@ func binaryToDecimal(binary string) (decimal int, err error) {
 		decimal += int(bit-'0') * int(math.Pow(2, float64(len(binary)-1-i)))
 	}
 	return decimal, nil
+}
+
+// Function
+// Created by Shubham Bathla - 500232317
+// This function is accepting principal amount, rate of Interest and time of loan during execution and output Simple Interest
+func calculateAndDisplaySimpleInterest() {
+	var principal, rate, time float64
+
+	// Getting user input
+	fmt.Print("Enter the principal amount: ")
+	fmt.Scanln(&principal)
+
+	fmt.Print("Enter the rate of interest (in percent): ")
+	fmt.Scanln(&rate)
+
+	fmt.Print("Enter the time (in years): ")
+	fmt.Scanln(&time)
+
+	// Calculating simple interest
+	interest := (principal * rate * time) / 100
+
+	// Displaying the result
+	fmt.Printf("The simple interest is: %f\n", interest)
 }
