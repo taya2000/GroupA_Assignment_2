@@ -42,6 +42,19 @@ func main() {
 	result := fibonacci(limit)
 	fmt.Printf("Fibonacci series up to %d: %v\n", limit, result)
 	fmt.Println("")
+
+	fmt.Println("====Starting the function done by Abhisheik Yadla which will print Hello world====")
+
+	var year int
+
+	fmt.Print("Enter a year: ")
+	fmt.Scan(&year)
+
+	if isLeapYear(year) {
+		fmt.Println(year, "is a leap year.")
+	} else {
+		fmt.Println(year, "is not a leap year.")
+	}
 }
 
 // Created by Tejaswi Cheripally - 500229934
@@ -79,4 +92,12 @@ func fibonacci(limit int) []int {
 		series = append(series, nextNum)
 	}
 	return series
+}
+
+//Created by Abhisheik Yadla - 500219580
+//This function will check whether the given year is leap year or not
+func isLeapYear(year int) bool {
+	// Leap year conditions: divisible by 4, not divisible by 100 unless divisible by 400
+	return (year%4 == 0 && year%100 != 0) || (year%400 == 0)
+
 }
