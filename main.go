@@ -55,6 +55,18 @@ func main() {
 	} else {
 		fmt.Println(year, "is not a leap year.")
 	}
+
+	fmt.Println("====Starting the function done by Mohammed Abdul which Reverse the String====")
+	//Reverse a String
+	// Getting input from the user
+	var input string
+	fmt.Println("Enter a string: ")
+	fmt.Scanln(&input)
+	// Calling the reverseString function to get the reversed string
+	reversed := reverseString(input)
+	// Printing the reversed string
+	fmt.Printf("Reversed string: %s\n", reversed)
+	fmt.Println("")
 }
 
 // Created by Tejaswi Cheripally - 500229934
@@ -100,4 +112,23 @@ func isLeapYear(year int) bool {
 	// Leap year conditions: divisible by 4, not divisible by 100 unless divisible by 400
 	return (year%4 == 0 && year%100 != 0) || (year%400 == 0)
 
+}
+
+// Created by Mohammed Abdul - 500225922
+// This function will reverse the string
+func reverseString(input string) string {
+	// To make reversing easier, convert the string to a rune slice.
+	characters := []rune(input)
+
+	// Determining the length of the slice
+	length := len(characters)
+
+	// Iterate through half of the loop and swaping the characters
+	for i, j := 0, length-1; i < j; i, j = i+1, j-1 {
+		// Swaping the characters at positions i and j
+		characters[i], characters[j] = characters[j], characters[i]
+	}
+
+	// Converting the rune slice back to a string and return
+	return string(characters)
 }
